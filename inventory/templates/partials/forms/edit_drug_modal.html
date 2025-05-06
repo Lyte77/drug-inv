@@ -1,0 +1,16 @@
+<h3>Edit Drug</h3>
+<form 
+    hx-post="{% url 'edit-drug' drug.id %}" 
+    hx-target="#drug-row-{{ drug.id }}" 
+    hx-swap="outerHTML"
+   
+    hx-on::after-request="document.getElementById('edit_drug_modal').close()"
+    method="post"
+>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="modal-action">
+        <button type="submit" class="btn btn-primary">Add Drug</button>
+        <button type="button" onclick="edit_drug_modal.close()" class="btn">Cancel</button>
+    </div>
+</form>

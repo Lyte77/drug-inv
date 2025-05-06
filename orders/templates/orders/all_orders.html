@@ -1,0 +1,31 @@
+{% extends "inventory/base.html" %}
+{% load static %}
+
+
+{% block content %}
+<div class="flex justify-center mt-17">
+<!-- <button type="button" onclick="openAuthenticationModal()" class="mt-20 btn btn-primary px-6 py-3 rounded-lg text-white bg-blue-600 hover:bg-blue-700 transition" onclick="drug_modal.showModal()">
+    Add Order
+  </button> -->
+  <button 
+  class="mt-20 btn btn-primary px-6 py-3 rounded-lg text-white bg-blue-600 hover:bg-blue-700 transition"
+  onclick="order_modal.showModal()"
+> Add Order</button>
+</div>
+<div class="mt-20 overflow-x-auto  bg-white rounded-lg shadow">
+    {% include 'partials/table/order_table.html' %}
+  </div>
+
+  <dialog id="edit_orders_modal" class="modal">
+    <div class="modal-box">
+        <div id="edit-order-modal-content">
+            <!-- htmx will load the edit form here -->
+        </div>
+    </div>
+</dialog>
+
+
+
+
+
+{% endblock %}

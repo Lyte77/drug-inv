@@ -1,0 +1,18 @@
+<table class="w-full table-auto" id='inventory-table'>
+    <thead>
+        <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+            
+            <th class="py-3 px-6 text-left">Name</th>
+            <th class="py-3 px-6 text-left">Price</th>
+            <th class="py-3 px-6 text-left">Quantity</th>
+            
+        </tr>
+    </thead>
+    <tbody class="text-gray-600 text-sm" id="drug-table-body">    
+        
+            {% for drug  in drugs %}
+                {% include 'partials/table/drug_row.html' %}
+            {% endfor %}         
+     
+    </tbody>
+</table>

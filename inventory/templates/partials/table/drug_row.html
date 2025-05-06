@@ -1,0 +1,39 @@
+
+
+<tr id="drug-row-{{ drug.id }}" class="border-b border-gray-200 hover:bg-gray-100">
+ 
+    
+    <td class="py-3 px-6 text-left">{{ drug.name }}</td>
+    <td class="py-3 px-6 text-left">{{ drug.price }}</td>
+    <td class="py-3 px-6 text-left">{{ drug.quantity }}</td>
+    <td>
+        <button 
+        onclick="edit_drug_modal.showModal()"
+        hx-get="{% url 'edit-drug' drug.id %}"
+        hx-target="#edit-drug-modal-content"
+        class="btn btn-soft btn-warning">
+        Edit
+    </button>
+        <button
+        hx-delete="{% url 'delete-drug' drug.id %}"
+        hx-target="#messages"
+        hx-swap="innerHTML"
+        hx-confirm="Do you want to delete"
+        hx-on::after-request="if(event.detail.successful) document.getElementById('drug-row-{{ drug.id }}').remove();"
+       class="btn btn-soft btn-error">
+          Delete
+      </button>
+    </td>
+   
+</tr>
+
+<section id="messages">
+    {% include 'partials/toast/toast.html' %}
+</section>
+
+
+    
+
+
+
+

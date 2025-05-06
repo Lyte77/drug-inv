@@ -1,0 +1,29 @@
+{% extends 'inventory/base.html' %}
+
+{% block content %}
+{% include "partials/forms/add_drug_modal.html" %}
+
+<div class="flex justify-center mt-17">
+    <button 
+      class="btn btn-primary px-6 py-3 rounded-lg text-white bg-blue-600 hover:bg-blue-700 transition"
+      onclick="drug_modal.showModal()"
+    >
+      Add Drug
+    </button>
+  </div>
+  
+<div class=" mt-20 overflow-x-auto bg-white rounded-lg shadow">
+    
+    {% include 'partials/table/drug_table.html' %}
+
+  </div>
+
+  <dialog id="edit_drug_modal" class="modal">
+    <div class="modal-box">
+        <div id="edit-drug-modal-content">
+            <!-- htmx will load the edit form here -->
+        </div>
+    </div>
+</dialog>
+
+{% endblock content %}

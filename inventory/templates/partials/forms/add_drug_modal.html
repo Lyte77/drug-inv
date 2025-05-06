@@ -1,0 +1,20 @@
+
+<dialog id="drug_modal" class="modal">
+    <div class="modal-box  bg-white rounded-lg shadow dark:bg-gray-700 flex flex-col max-h-[90vh] ">
+        <h3>Add Drug</h3>
+        <form hx-post="{% url 'add-drug' %}" 
+        hx-target="#drug-table-body"
+        hx-swap="beforeend" 
+        hx-on::after-request="if(event.detail.successful) { document.getElementById('drug_modal').close(); this.reset();}"
+        method="post">
+            {% csrf_token %}
+            {{ drug_form.as_p }}
+            <div class="modal-action">
+                <button type="submit" class="btn btn-primary">Add Drug</button>
+                <button type="button" onclick="drug_modal.close()" class="btn btn-soft btn-error">Cancel</button>
+            </div>
+
+
+        </form>
+ 
+</dialog>

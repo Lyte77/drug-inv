@@ -1,0 +1,27 @@
+
+
+
+ <dialog id="order_modal" class="modal">
+    <div class="modal-box  bg-white rounded-lg shadow dark:bg-gray-700 flex flex-col max-h-[90vh] ">
+        
+        <form method="POST" action="" 
+        class="space-y-4"
+        hx-post="{% url 'add-order' %}" 
+        hx-target="#inventory-table" 
+        hx-swap="beforeend" 
+        hx-on::after-request="document.getElementById('order_modal').close()">
+        {% csrf_token %}
+        <div class="grid gap-4 sm:grid-cols-2">
+            {% for field in form %}
+                {{ field }}
+            {% endfor %}
+        </div>
+        <div class="modal-action">
+            <button type='submit'  class="btn btn-primary" >Add Order</button>
+            <button type="button" class="btn btn-soft btn-error " onclick="order_modal.close()">Cancel</button>
+        </div>
+    </form>
+    
+    
+ 
+</dialog>

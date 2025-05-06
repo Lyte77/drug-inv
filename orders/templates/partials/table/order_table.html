@@ -1,0 +1,28 @@
+<table class="w-full table-auto" id='inventory-table'>
+    <thead>
+        <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+            
+            <th class="py-3 px-6 text-left">Name</th>
+            <th class="py-3 px-6 text-left">Address</th>
+            <th class="py-3 px-6 text-left">Phone</th>
+            <th class="py-3 px-6 text-center">Drug</th>
+            <th class="py-3 px-6 text-center">Quantity</th>
+            <th class="py-3 px-6 text-center">Price</th>
+            <th class="py-3 px-6 text-center">Paid Amount</th>
+            <th class="py-3 px-6 text-center">Date</th>
+            <th class="py-3 px-6 text-center">Balance</th>
+            <th class="py-3 px-6 text-center">Debtor</th>
+           
+        </tr>
+    </thead>
+    <tbody class="text-gray-600 text-sm">
+        {% for order in orders %}
+        
+        <a href="{% url 'edit-order' order.pk %}">
+            {% include 'partials/table/order_row.html' %}
+        </a>  
+        {% endfor %} 
+    </tbody>
+</table>
+
+ 

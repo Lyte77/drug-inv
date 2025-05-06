@@ -1,0 +1,43 @@
+
+
+<tr id="order-row-{{ order.id }}"
+  class="border-b border-gray-200 hover:bg-gray-100">
+    
+    <td class="py-3 px-6 text-left">{{ order.customer_name }}</td>
+    <td class="py-3 px-6 text-left">{{ order.address }}</td>
+    <td class="py-3 px-6 text-left">{{ order.phone }}</td>
+    <td class="py-3 px-6 text-left">{{ order.drug }}</td>
+    <td class="py-3 px-6 text-left">{{ order.quantity }}</td>
+    <td class="py-3 px-6 text-left">{{ order.price }}</td>
+    <td class="py-3 px-6 text-left">{{ order.paid_amount }}</td>
+    <td class="py-3 px-6 text-left">{{ order.order_at }}</td>
+    <td class="py-3 px-6 text-left">{{ order.balance_due }}</td>
+    <td class="py-3 px-6 text-left">
+        <span class="inline-block px-2 py-1 text-xs font-semibold bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded">
+            {{ order.is_debtor }}
+        </span> 
+    </td>
+    <td>
+        <button 
+        onclick="edit_orders_modal.showModal()"
+        hx-get="{% url 'edit-order' order.id %}"
+        hx-target="#edit-order-modal-content"
+        class="btn btn-soft btn-warning">
+        Edit
+    </button>
+    <button
+      hx-delete="{% url 'delete-order' order.id %}"
+      hx-target="#messages"
+      hx-swap="innerHTML"
+      hx-confirm="Do you want to delete"
+      hx-on::after-request="if(event.detail.successful) document.getElementById('order-row-{{ order.id }}').remove();"
+     class="btn btn-soft btn-error">
+        Delete
+    </button>
+    </td>
+</tr>
+
+
+<section id="messages">
+    {% include 'partials/toast/toast.html' %}
+</section>
