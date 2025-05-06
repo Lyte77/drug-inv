@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-w9^89y1==$9p3mvtd4+b36v=yztpo3os!oby!m)-oclre=s5)3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['drugzz.pythonanywhere.com']
+ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = ['drugzz.pythonanywhere.com']
 
 
 # Application definition
@@ -38,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
-    'compressor',
+    
     'django_htmx',
 
     'tailwind',
@@ -140,15 +141,6 @@ STATICFILES_DIRS = [BASE_DIR / 'static']  # Your development static files
 STATIC_ROOT = BASE_DIR / 'staticfiles'  # Where collectstatic puts all your static files
 
 # Compressor settings (if you're using django-compressor)
-COMPRESS_ENABLED = True
-COMPRESS_ROOT = STATIC_ROOT  # Same location for compressor files
-
-
-STATICFILES_FINDERS = [
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder',  # Only if you use compressor
-]
 
 
 # Default primary key field type
