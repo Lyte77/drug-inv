@@ -1,0 +1,5 @@
+cookiecutter>=2.6.0
+django>=5.2
+django-compressor>=4.5.1
+django-htmx>=1.23.0
+django-tailwind>=4.0.1
